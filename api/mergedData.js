@@ -1,7 +1,14 @@
-import React from 'react';
+import { getSinglePlayer } from './playerData';
+import { getSingleTeam } from './teamData';
 
-export default function mergedData() {
-  return (
-    <div>mergedData</div>
-  );
-}
+const viewPlayerDetails = (bookFirebaseKey) => new Promise((resolve, reject) => {
+  getSinglePlayer(bookFirebaseKey)
+    .then((bookObject) => {
+      getSingleTeam(bookObject.author_id)
+        .then((authorObject) => {
+          resolve({ authorObject, ...bookObject });
+        });
+    }).catch((error) => reject(error));
+});
+
+export default viewPlayerDetails;

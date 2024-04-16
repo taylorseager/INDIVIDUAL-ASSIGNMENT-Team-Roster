@@ -26,6 +26,9 @@ export default function NavBar() {
             <Link passHref href="/players/newPlayer">
               <Nav.Link>Create Players</Nav.Link>
             </Link>
+            <Link passHref href="/teams/teams">
+              <Nav.Link>Teams</Nav.Link>
+            </Link>
             <Button variant="danger" onClick={signOut}>Sign Out</Button>
           </Nav>
         </Navbar.Collapse>
