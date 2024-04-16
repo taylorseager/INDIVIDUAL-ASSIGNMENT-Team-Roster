@@ -1,37 +1,35 @@
-// import React from 'react';
+/* eslint-disable @next/next/no-img-element */
+import { useState, useEffect } from 'react';
+import { useRouter } from 'next/router';
+// import viewPlayerDetails from '../../api/mergedData';
+import { getPlayers } from '../../api/playerData';
 
-// export default function viewPlayer() {
-//   const [playerDetails, setPlayerDetails] = useState({});
-//   // use router to get query
-//   const router = useRouter();
+export default function ViewPlayer() {
+  const [playerDetails, setPlayerDetails] = useState({});
+  // use router to get query
+  const router = useRouter();
 
-//   // grab firebaseKey from url
-//   const { firebaseKey } = router.query;
+  // grab firebaseKey from url
+  const { firebaseKey } = router.query;
 
-//   // make call to API layer to get the data
-//   useEffect(() => {
-//     viewBookDetails(firebaseKey).then(setBookDetails);
-//   }, [firebaseKey]);
+  // make call to API layer to get the data
+  useEffect(() => {
+    getPlayers(firebaseKey).then(setPlayerDetails);
+  }, [firebaseKey]);
 
-//   return (
-//     <div className="mt-5 d-flex flex-wrap">
-//     <div className="d-flex flex-column">
-//       <img src={bookDetails.image} alt={bookDetails.title} style={{ width: '300px' }} />
-//     </div>
-//     <div className="text-white ms-5 details">
-//       <h5>
-//         {bookDetails.title} by {bookDetails.authorObject?.first_name} {bookDetails.authorObject?.last_name}
-//         {bookDetails.authorObject?.favorite ? ' 🤍' : ''}
-//       </h5>
-//       Author Email: <a href={`mailto:${bookDetails.authorObject?.email}`}>{bookDetails.authorObject?.email}</a>
-//       <p>{bookDetails.description || ''}</p>
-//       <hr />
-//       <p>
-//         {bookDetails.sale
-//           ? `🏷️ Sale $${bookDetails.price}`
-//           : `$${bookDetails.price}`}
-//       </p>
-//     </div>
-//   </div>
-//   );
-// }
+  return (
+    <div className="mt-5 d-flex flex-wrap">
+      <div className="d-flex flex-column">
+        <img src={playerDetails.image} alt={playerDetails.full_name} style={{ width: '300px' }} />
+      </div>
+      <div className="text-white ms-5 details">
+        <h5>
+          {playerDetails.full_name}
+          {playerDetails.position}
+          {playerDetails.team}
+        </h5>
+        <hr />
+      </div>
+    </div>
+  );
+}
