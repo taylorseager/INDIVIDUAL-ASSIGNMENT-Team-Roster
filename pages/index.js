@@ -1,28 +1,34 @@
 import { Button } from 'react-bootstrap';
-import { signOut } from '../utils/auth';
+import Link from 'next/link';
+import { useEffect, useState } from 'react';
 import { useAuth } from '../utils/context/authContext';
+import { getPlayers } from '../api/playerData';
+import PlayerCard from '../components/PlayerCard';
 
 function Home() {
-  // const [players, setPlayers] = useState([]);
+  const [players, setPlayers] = useState([]);
 
   const { user } = useAuth();
 
+  const getAllPlayers = () => {
+    getPlayers(user.uid).then(setPlayers);
+  };
+
+  useEffect(() => {
+    getAllPlayers();
+  });
+
   return (
-    <div
-      className="text-center d-flex flex-column justify-content-center align-content-center"
-      style={{
-        height: '90vh',
-        padding: '30px',
-        maxWidth: '400px',
-        margin: '0 auto',
-      }}
-    >
-      <h1>Hello {user.displayName}! </h1>
-      <p>Click the button below to logout!</p>
-      <p>We hope to see you back soon!</p>
-      <Button variant="danger" type="button" size="lg" className="copy-btn" onClick={signOut}>
-        Sign Out
-      </Button>
+    <div className="text-center my-4">
+      <Link href="/players/new" passHref>
+        <Button>Add A Player</Button>
+      </Link>
+      <div className="d-flex flex-wrap">
+        {/* map over players here using PlayerCard component */}
+        {players.map((player) => (
+          <PlayerCard key={players.firebaseKey} playerObj={player} />
+        ))}
+      </div>
     </div>
   );
 }
