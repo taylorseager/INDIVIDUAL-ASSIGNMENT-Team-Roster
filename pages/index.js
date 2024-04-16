@@ -3,6 +3,8 @@ import { signOut } from '../utils/auth';
 import { useAuth } from '../utils/context/authContext';
 
 function Home() {
+  // const [players, setPlayers] = useState([]);
+
   const { user } = useAuth();
 
   return (

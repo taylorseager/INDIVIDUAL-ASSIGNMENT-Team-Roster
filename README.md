@@ -1,3 +1,8 @@
+Wireframe: https://www.figma.com/file/LgntZlXJuiZdHHXu7Jda4k/Roster-Individual-Assessment?type=design&node-id=0%3A1&mode=design&t=8xemF7dBH02zZjGG-1 
+
+ERD: https://www.figma.com/file/SQ3vJCqx6Urjbo3Hckos9p/FigJam-basics?type=whiteboard&node-id=0%3A1&t=wjBDwa6xOV5hF39V-1 
+
+
 # React/Next.js Template
 
 [See Live Demo of this Template](https://drt-next-js-template.netlify.app/)
