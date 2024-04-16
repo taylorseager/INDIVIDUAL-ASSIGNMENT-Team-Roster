@@ -25,11 +25,10 @@ function Home() {
       </Link>
       <div className="d-flex flex-wrap">
         {/* map over players here using PlayerCard component */}
-        {players.map((book) => (
-          <PlayerCard key={players.firebaseKey} playerObj={book} />
+        {players.map((player) => (
+          <PlayerCard key={players.firebaseKey} playerObj={player} />
         ))}
       </div>
-
     </div>
   );
 }

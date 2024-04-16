@@ -1,8 +1,8 @@
 /* eslint-disable @next/next/no-img-element */
 import { useState, useEffect } from 'react';
 import { useRouter } from 'next/router';
+import { getPlayers } from '../api/playerData';
 // import viewPlayerDetails from '../../api/mergedData';
-import { getPlayers } from '../../api/playerData';
 
 export default function ViewPlayer() {
   const [playerDetails, setPlayerDetails] = useState({});

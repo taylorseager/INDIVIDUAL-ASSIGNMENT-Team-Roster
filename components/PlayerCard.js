@@ -7,7 +7,7 @@ import Link from 'next/link';
 function PlayerCard({ playerObj }) {
   return (
     <Card style={{ width: '18rem' }}>
-      <Card.Img variant="top" src={playerObj.image} alt={playerObj.full_name} style={{ height: '400px' }} />
+      <Card.Img variant="top" src={playerObj.image} alt={playerObj.full_name} style={{ height: '250px' }} />
       <Card.Body>
         <Card.Title>{playerObj.full_name}</Card.Title>
         <p className="card-text bold">{playerObj.position}</p>
@@ -31,7 +31,7 @@ PlayerCard.propTypes = {
   playerObj: PropTypes.shape({
     image: PropTypes.string,
     full_name: PropTypes.string,
-    team: PropTypes.bool,
+    team: PropTypes.string,
     position: PropTypes.string,
     firebaseKey: PropTypes.string,
   }).isRequired,
