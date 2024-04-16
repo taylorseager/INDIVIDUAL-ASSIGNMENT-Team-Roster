@@ -1,0 +1,42 @@
+{
+  "-NvZAgcawXMMFaZLVm4T": {
+    "full_name": "Luke Evangelista",
+    "image": "http://dummyimage.com/113x167.png/ff4444/ffffff",
+    "team": "Predators",
+    "position": "Right Wing",
+    "firebaseKey": "-NvZAgcawXMMFaZLVm4T",
+    "uid": "V9tnywFUC1SxMdDvGwHo136vRrB3"
+  },
+  "-NvZAgcawXMMFaZLVm4U": {
+    "full_name": "Filip Forsberg",
+    "image": "http://dummyimage.com/133x166.png/5fa2dd/ffffff",
+    "team": "Predators",
+    "position": "Left Wing",
+    "firebaseKey": "-NvZAgcawXMMFaZLVm4U",
+    "uid": "V9tnywFUC1SxMdDvGwHo136vRrB3"
+  },
+  "-NvZAgcb5F82HatirTs5": {
+    "full_name": "Cody Glass",
+    "image": "http://dummyimage.com/201x232.png/cc0000/ffffff",
+    "team": "Predators",
+    "position": "Center",
+    "firebaseKey": "-NvZAgcb5F82HatirTs5",
+    "uid": "V9tnywFUC1SxMdDvGwHo136vRrB3"
+  },
+  "-NvZAgcco0MGxfjd9CLg": {
+    "full_name": "Roman Josi",
+    "image": "http://dummyimage.com/216x196.png/dddddd/000000",
+    "team": "Predators",
+    "position": "Defense",
+    "firebaseKey": "-NvZAgcco0MGxfjd9CLg",
+    "uid": "V9tnywFUC1SxMdDvGwHo136vRrB3"
+  },
+  "-NvZAgcdXFZO9EPdvwZk": {
+    "full_name": "Juuse Saros",
+    "image": "http://dummyimage.com/177x129.png/ff4444/ffffff",
+    "team": "Predators",
+    "position": "Goalie",
+    "firebaseKey": "-NvZAgcdXFZO9EPdvwZk",
+    "uid": "V9tnywFUC1SxMdDvGwHo136vRrB3"
+  }
+}
