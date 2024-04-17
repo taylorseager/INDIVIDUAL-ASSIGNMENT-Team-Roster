@@ -19,9 +19,6 @@ function PlayerCard({ playerObj, onUpdate }) {
         <Card.Title>{playerObj.full_name}</Card.Title>
         <p className="card-text bold">{playerObj.position}</p>
         <p className="card-text bold">{playerObj.team}</p>
-        <Link href={`/players/${playerObj.firebaseKey}`} passHref>
-          <Button variant="primary" className="m-2">VIEW</Button>
-        </Link>
         {/* DYNAMIC LINK TO EDIT THE BOOK DETAILS  */}
         <Link href={`/players/edit/${playerObj.firebaseKey}`} passHref>
           <Button variant="info">EDIT</Button>
