@@ -3,8 +3,15 @@ import Button from 'react-bootstrap/Button';
 import Card from 'react-bootstrap/Card';
 import PropTypes from 'prop-types';
 import Link from 'next/link';
+import { deletePlayer } from '../api/playerData';
 
-function PlayerCard({ playerObj }) {
+function PlayerCard({ playerObj, onUpdate }) {
+  const deleteThisPlayer = () => {
+    if (window.confirm(`Are you 110% positive you want to delete the amazing ${playerObj.full_name}?!?! This cannot be undone. Tread lightly my friend.`)) {
+      deletePlayer(playerObj.firebaseKey).then(() => onUpdate());
+    }
+  };
+
   return (
     <Card style={{ width: '18rem' }}>
       <Card.Img variant="top" src={playerObj.image} alt={playerObj.full_name} style={{ height: '250px' }} />
@@ -19,7 +26,7 @@ function PlayerCard({ playerObj }) {
         <Link href={`/players/edit/${playerObj.firebaseKey}`} passHref>
           <Button variant="info">EDIT</Button>
         </Link>
-        <Button variant="danger" className="m-2">
+        <Button variant="danger" onClick={deleteThisPlayer} className="m-2">
           DELETE
         </Button>
       </Card.Body>
@@ -35,7 +42,7 @@ PlayerCard.propTypes = {
     position: PropTypes.string,
     firebaseKey: PropTypes.string,
   }).isRequired,
-  // onUpdate: PropTypes.func.isRequired,
+  onUpdate: PropTypes.func.isRequired,
 };
 
 export default PlayerCard;
