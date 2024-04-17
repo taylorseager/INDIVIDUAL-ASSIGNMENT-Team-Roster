@@ -38,7 +38,7 @@ function CreatePlayerForm({ obj }) {
   const handleSubmit = (e) => {
     e.preventDefault();
     if (obj.firebaseKey) {
-      updatePlayer(formInput).then(() => router.push(`/players/${obj.firebaseKey}`));
+      updatePlayer(formInput).then(() => router.push('/'));
     } else {
       const payload = { ...formInput, uid: user.uid };
       createPlayer(payload).then(({ name }) => {
