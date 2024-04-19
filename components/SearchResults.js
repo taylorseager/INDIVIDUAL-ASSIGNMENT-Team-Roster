@@ -1,7 +1,8 @@
 import React from 'react';
+import PlayerCard from './PlayerCard';
 
 export default function SearchResults() {
   return (
-    <div>SearchResults</div>
+    <PlayerCard />
   );
 }
