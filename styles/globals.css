@@ -18,5 +18,13 @@ a {
 }
 
 body {
-  background-color: #88effd;
+  background-image: url(../public/predBackground.jpg);
+  background-size: cover;
+}
+
+#playerCard {
+  display: flex;
+  justify-content: center;
+  gap: 20px;
+  margin: 10px;
 }
