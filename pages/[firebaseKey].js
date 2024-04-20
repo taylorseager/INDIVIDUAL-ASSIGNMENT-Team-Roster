@@ -1,35 +1,53 @@
 /* eslint-disable @next/next/no-img-element */
 import { useState, useEffect } from 'react';
-import { useRouter } from 'next/router';
+// import { useRouter } from 'next/router';
 import { getPlayers } from '../api/playerData';
-// import viewPlayerDetails from '../../api/mergedData';
+import SearchBar from '../components/SearchBar';
+import { useAuth } from '../utils/context/authContext';
+import PlayerCard from '../components/PlayerCard';
 
-export default function ViewPlayer() {
-  const [playerDetails, setPlayerDetails] = useState({});
+function ViewPlayer() {
+  const [players, setPlayers] = useState({});
+  const [filteredPlayers, setFilteredPlayers] = useState([]);
+  const { user } = useAuth();
   // use router to get query
-  const router = useRouter();
+  // const router = useRouter();
 
-  // grab firebaseKey from url
-  const { firebaseKey } = router.query;
+  // // grab firebaseKey from url
+  // const { firebaseKey } = router.query;
 
-  // make call to API layer to get the data
+  const getAllPlayers = () => {
+    getPlayers(user.uid).then((data) => {
+      setPlayers(data);
+      setFilteredPlayers(data);
+    });
+  };
+
   useEffect(() => {
-    getPlayers(firebaseKey).then(setPlayerDetails);
-  }, [firebaseKey]);
+    getAllPlayers();
+  // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
+
+  const handleSearch = (searchValue) => {
+    const filteredSearch = players.filter((player) => (
+      player.full_name.toLowerCase().includes(searchValue.toLowerCase()))
+      || player.position.toLowerCase().includes(searchValue.toLowerCase()));
+    setFilteredPlayers(filteredSearch);
+  };
 
   return (
-    <div className="mt-5 d-flex flex-wrap">
-      <div className="d-flex flex-column">
-        <img src={playerDetails.image} alt={playerDetails.full_name} style={{ width: '300px' }} />
+    <><h1>All Members</h1>
+      <h3>Search All Members:</h3>
+      <div>
+        <SearchBar handleSearch={handleSearch} />
       </div>
-      <div className="text-white ms-5 details">
-        <h5>
-          {playerDetails.full_name}
-          {playerDetails.position}
-          {playerDetails.team}
-        </h5>
-        <hr />
+      <div className="d-flex flex-wrap">
+        {filteredPlayers.map((player) => (
+          <PlayerCard playerObj={player} key={player.firebaseKey} onUpdate={getAllPlayers} />
+        ))}
       </div>
-    </div>
+    </>
   );
 }
+
+export default ViewPlayer;
