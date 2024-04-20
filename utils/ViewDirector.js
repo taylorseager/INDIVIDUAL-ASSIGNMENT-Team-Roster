@@ -1,4 +1,5 @@
 import PropTypes from 'prop-types';
+import { useState } from 'react';
 import { useAuth } from './context/authContext';
 import Loading from '../components/Loading';
 import Signin from '../components/Signin';
@@ -6,6 +7,11 @@ import NavBar from '../components/NavBar';
 
 const ViewDirectorBasedOnUserAuthStatus = ({ component: Component, pageProps }) => {
   const { user, userLoading } = useAuth();
+  const [players, setPlayers] = useState([]);
+
+  const rehydrateResults = (results) => {
+    setPlayers(results);
+  };
 
   // if user state is null, then show loader
   if (userLoading) {
@@ -16,9 +22,9 @@ const ViewDirectorBasedOnUserAuthStatus = ({ component: Component, pageProps }) 
   if (user) {
     return (
       <>
-        <NavBar /> {/* NavBar only visible if user is logged in and is in every view */}
+        <NavBar rehydrateWithResults={rehydrateResults} /> {/* NavBar only visible if user is logged in and is in every view */}
         <div className="container">
-          <Component {...pageProps} />
+          <Component {...pageProps} playersFromSearch={players} />
         </div>
       </>
     );

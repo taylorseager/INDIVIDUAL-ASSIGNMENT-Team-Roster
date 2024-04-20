@@ -25,7 +25,7 @@ function CreatePlayerForm({ obj }) {
     getPlayers(user.uid).then(setPlayers);
 
     if (obj.firebaseKey) setFormInput(obj);
-  }, [obj, user]);
+  }, [obj, user.uid]);
 
   const handleChange = (e) => {
     const { name, value } = e.target;

@@ -1,12 +1,18 @@
+/* eslint-disable react/prop-types */
 /* eslint-disable jsx-a11y/anchor-is-valid */
 import React from 'react';
 import Link from 'next/link';
 import {
-  Navbar, Container, Nav, Button, Row, Form, Col,
+  Navbar, Container, Nav, Button,
 } from 'react-bootstrap';
 import { signOut } from '../utils/auth';
+import SearchBar from '../pages/search';
 
-export default function NavBar() {
+function NavBar({ rehydrateWithResults }) {
+  const handleSearch = (results) => {
+    rehydrateWithResults(results);
+  };
+
   return (
     <Navbar collapseOnSelect expand="lg" bg="dark" variant="dark">
       <Container>
@@ -26,20 +32,7 @@ export default function NavBar() {
             <Link passHref href="/teams/teams">
               <Nav.Link>Teams</Nav.Link>
             </Link>
-            <Form inline>
-              <Row>
-                <Col xs="auto">
-                  <Form.Control
-                    type="text"
-                    placeholder="Search Players"
-                    className=" mr-sm-2"
-                  />
-                </Col>
-                <Col xs="auto">
-                  <Button type="submit">Submit</Button>
-                </Col>
-              </Row>
-            </Form>
+            <SearchBar onSearch={handleSearch} />
             <Button variant="danger" onClick={signOut}>Sign Out</Button>
           </Nav>
         </Navbar.Collapse>
@@ -47,3 +40,4 @@ export default function NavBar() {
     </Navbar>
   );
 }
+export default NavBar;
