@@ -13,10 +13,10 @@ function Signin() {
         margin: '0 auto',
       }}
     >
-      <h1>Welcome to the Team Roster!</h1>
-      <p>Click the button below to login!</p>
+      <h1 style={{ background: 'black', color: 'white' }}>Welcome to the Team Roster!</h1>
+      <p style={{ background: 'black', color: 'white' }}>Click the button below to login!</p>
       <Button type="button" size="lg" className="copy-btn" onClick={signIn}>
-        Sign In
+        Let&#39;s Go Preds!
       </Button>
     </div>
   );

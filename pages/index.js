@@ -20,9 +20,9 @@ function Home() {
 
   return (
     <div className="text-center my-4">
-      <h1>Welcome {user.displayName.toUpperCase()}!</h1>
+      <h1 style={{ background: 'black', color: 'white' }}>Welcome {user.displayName.toUpperCase()}!</h1>
       <Link href="/players/newPlayer" passHref>
-        <Button>Add A Player</Button>
+        <Button variant="warning">Add A Player</Button>
       </Link>
     </div>
   );

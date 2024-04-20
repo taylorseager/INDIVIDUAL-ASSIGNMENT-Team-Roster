@@ -38,13 +38,13 @@ function CreatePlayerForm({ obj }) {
   const handleSubmit = (e) => {
     e.preventDefault();
     if (obj.firebaseKey) {
-      updatePlayer(formInput).then(() => router.push('/'));
+      updatePlayer(formInput).then(() => router.push('/players'));
     } else {
       const payload = { ...formInput, uid: user.uid };
       createPlayer(payload).then(({ name }) => {
         const patchPayload = { firebaseKey: name };
         updatePlayer(patchPayload).then(() => {
-          router.push('/');
+          router.push('/players');
         });
       });
     }
@@ -100,40 +100,7 @@ function CreatePlayerForm({ obj }) {
           onChange={handleChange}
           required
         />
-        {/* <Form.Select
-          aria-label="team"
-          name="team"
-          onChange={handleChange}
-          className="mb-3"
-          value={obj.team}
-          required
-        > */}
-        {/* <option value="">Select an Author</option>
-          {
-            players.map((author) => (
-              <option
-                key={author.firebaseKey}
-                value={author.firebaseKey}
-              >
-                {author.first_name} {author.last_name}
-              </option> */}
-        {/* ))
-          } */}
-        {/* </Form.Select> */}
       </FloatingLabel>
-
-      {/* DESCRIPTION TEXTAREA
-      <FloatingLabel controlId="floatingTextarea" label="Description" className="mb-3">
-        <Form.Control
-          as="textarea"
-          placeholder="Description"
-          style={{ height: '100px' }}
-          name="description"
-          value={formInput.description}
-          onChange={handleChange}
-          required
-        />
-      </FloatingLabel> */}
 
       {/* SUBMIT BUTTON  */}
       <Button type="submit">{obj.firebaseKey ? 'Update' : 'Create'} Player</Button>

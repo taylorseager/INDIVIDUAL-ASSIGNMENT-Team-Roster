@@ -36,12 +36,12 @@ function ViewPlayer() {
   };
 
   return (
-    <><h1>All Members</h1>
-      <h3>Search All Members:</h3>
+    <><h1 style={{ color: 'white' }}>All Players</h1>
+      <h3 style={{ color: 'white' }}>Search All Players:</h3>
       <div>
         <SearchBar handleSearch={handleSearch} />
       </div>
-      <div className="d-flex flex-wrap">
+      <div id="playerCard" className="d-flex flex-wrap">
         {filteredPlayers.map((player) => (
           <PlayerCard playerObj={player} key={player.firebaseKey} onUpdate={getAllPlayers} />
         ))}
